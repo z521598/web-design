@@ -29,6 +29,7 @@ public class FileUploadServlet extends HttpServlet {
         System.out.println(part.getSubmittedFileName());
         InputStream inputStream = part.getInputStream();
         // File.separator;
+        // // // UUID.randomUUID
         File file = new File("/Users/zhaodonghui/Desktop/小猪求职/项目课件/web-design/a.txt");
         file.createNewFile();
         byte[] bytes = new byte[1024];

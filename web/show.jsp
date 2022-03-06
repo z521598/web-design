@@ -12,6 +12,7 @@
 <head>
     <title>结果</title>
 </head>
+<!-- https://www.runoob.com/jsp/jsp-jstl.html -->
 <body>
     ${addRes.a} + ${addRes.b} = ${addRes.res}
 </body>
