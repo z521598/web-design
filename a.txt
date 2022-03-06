@@ -1,0 +1,85 @@
+软件备注.txt
+1. IDEA：
+百度云盘 + 印象笔记的许可码
+
+2. mysql
+nohup mysqld &
+mysql -uroot -pmysql
+
+3. Docker && k8s
+https://github.com/gotok8s/k8s-docker-desktop-for-mac
+国内镜像地址：https://registry.docker-cn.com
+拉取镜像：https://www.jianshu.com/p/e5c056baa8ab
+一直Running：https://github.com/docker/for-mac/issues/3649
+
+4. Kafka
+安装：https://www.cnblogs.com/angelyan/p/14445710.html
+
+docker run -d --name kafka \
+-p 9092:9092 \
+-e KAFKA_BROKER_ID=0 \
+-e KAFKA_ZOOKEEPER_CONNECT=192.168.2.12:2181 \
+-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.2.12:9092 \
+-e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 wurstmeister/kafka
+
+创建Topic：house_build
+
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 3 --partitions 1 --topic house_build
+
+ZK工具（windows）：https://www.cnblogs.com/xubao/p/10693932.html
+zkui（mac）：https://blog.csdn.net/w651203654/article/details/108031292
+
+/Users/zhaodonghui/zk/zkui-master
+
+java -jar target/zkui-2.0-SNAPSHOT-jar-with-dependencies.jar 
+
+localhost:9090
+5. ES
+安装：https://www.jianshu.com/p/d54abd26f8c3
+https://www.amd5.cn/atang_4301.html
+
+docker run --name elasticsearch563 -p 9201:9200 -p 9301:9300 -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms64m -Xmx128m" -v ~/study563/docker/es/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v ~/study563/docker/es/data:/usr/share/elasticsearch/data -v ~/study563/docker/es/plugins:/usr/share/elasticsearch/plugins -d elasticsearch:5.6.3
+
+
+https://www.elastic.co/cn/downloads/past-releases/elasticsearch-6-8-3
+
+/Users/zhaodonghui/es/elasticsearch-6.8.3
+
+./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.8.3/elasticsearch-analysis-ik-6.8.3.zip
+
+
+nohup /Users/zhaodonghui/es/elasticsearch-6.8.3/bin/elasticsearch &
+
+6. Redis
+目录：/Users/zhaodonghui/redis-workspace
+启动：nohup /Users/zhaodonghui/redis-workspace/redis/redis-master-6379/src/redis-server &
+
+
+7. Kibana
+Docker：
+https://www.cnblogs.com/Rawls/p/10300639.html
+docker run -d   --name=kibana   --restart=always   -p 5601:5601   -v /Users/zhaodonghui/es/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml kibana:6.8.3
+
+宿主机：https://www.elastic.co/cn/downloads/past-releases#kibana
+https://blog.csdn.net/hot_summery/article/details/100173103
+
+/Users/zhaodonghui/es/kibana
+http://localhost:5601/
+
+
+8. helm安装
+
+重启后的操作：
+nohup /Users/zhaodonghui/redis-workspace/redis/redis-master-6379/src/redis-server /Users/zhaodonghui/redis-workspace/redis/redis-master-6379/redis.conf &
+
+nohup /Users/zhaodonghui/redis-workspace/redis-4.0.10/src/redis-server /Users/zhaodonghui/redis-workspace/redis-4.0.10/redis.conf &
+nohup /Users/zhaodonghui/es/elasticsearch-6.8.3/bin/elasticsearch &
+nohup mysqld &
+Docker启动ZK
+Docker启动kafka
+
+
+9. Nginx
+docker run --name nginx -p 80:80 -v /Users/zhaodonghui/nginx/conf.d:/etc/nginx/conf.d -d nginx
+
+
